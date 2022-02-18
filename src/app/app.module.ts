@@ -11,7 +11,10 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 // import { AuthModule} from '@angular/fire/auth';
 // import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 // import { SETTINGS as AUTH_SETTINGS } from '@angular/fire/compat/auth';
-import {environment} from 'src/environments/environment'
+import {environment} from 'src/environments/environment';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { MaterialModule } from './material-module/material/material.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +24,11 @@ import {environment} from 'src/environments/environment'
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    BrowserAnimationsModule,
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule
     // AuthModule,
     // provideFirebaseApp(()=> initializeApp(environment.firebaseConfig)),
     // provideFirestore(()=> getFirestore())

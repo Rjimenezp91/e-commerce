@@ -28,7 +28,7 @@
 
 .blueBg .box h2
 {
-    color: #fff;
+    /* color: #fff; */
     font-size: 1.2em;
     font-weight: 500;
     margin-bottom: 10px;
@@ -41,7 +41,8 @@
     left: 0;
     width: 50%;
     height: 100%;
-    background: #FFF;
+    /* background: var(--secondary-color); */
+    background-color: #fff;
     z-index: 1;
     display: flex;
     justify-content: center;
@@ -52,4 +53,57 @@
 .formBox.active 
 {
     left: 50%;
+}
+.formContainer
+{
+    position: absolute;
+    flex-direction: column;
+    /* text-align: center; */
+    padding: 30px 30px;
+    top: 0;
+    left: 0;
+}
+.formContainer .title
+{
+    color: var(--primary-color);
+    padding: 25px 0px;
+}
+.formFieldContainer
+{
+    width: 100%;
+    /* padding: 0px 30px; */
+}
+
+::ng-deep.mat-form-field-underline 
+{
+    background-color: var(--primary-color) !important;
+} 
+
+.buttonContainer
+{
+    margin: 20px 0;
+}
+
+.btnLoginCard{
+    width: 100%;
+
+}
+.btnGoogleContainer
+{
+    display: flex;
+    /* position: relative; */
+    margin: 10px 0px;
+}
+.btnGoogle
+{
+    /* position: absolute; */
+    width: 100%;
+    background-color: #a3a3a3;
+    display: flex;
+    justify-content: center;
+}
+.icon{
+    color: #000;
+    /* position: absolute; */
+    margin-left: 5px;
 }

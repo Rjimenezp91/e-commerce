@@ -1,15 +1,39 @@
 <div class="container">
     <div class="blueBg">
-        <div class="box sign-in">
-            <h2>¿Ya tienes una cuenta?</h2>
-            <button class="button sign-in" (click)="signUpActive()">Inicia sesión</button>
-        </div>
         <div class="box sign-up">
+            <h2>¿Ya tienes una cuenta?</h2>
+            <button class="button sign-up" (click)="signUpActive()">Inicia sesión</button>
+        </div>
+        <div class="box sign-in">
             <h2>¿No tienes una cuenta?</h2>
             <button class="button sign-in" (click)="signInActive()">Registrate</button>
         </div>
     </div>
     <div class="formBox">
+        <form [formGroup]="loginForm">
+            <div class="formContainer">
+                <h2 class="title">Iniciar sesión</h2>
+                <mat-form-field class="formFieldContainer" appearance="legacy" floatLabel="always">
+                    <mat-label class="label" >Email</mat-label>
+                    <input matInput formControlName="email" class="input" placeholder="Escriba su correo">
+                </mat-form-field>
+                <mat-form-field class="formFieldContainer" floatLabel="always">
+                    <mat-label class="label" >Password</mat-label>
+                    <input matInput formControlName="password" class="input" placeholder="Escriba su contraseña">
+                </mat-form-field>
+                <div class="buttonContainer">
+                    <button class="button btnLoginCard">Iniciar sesión</button>
+                </div>
+                <div>
+                    <p>¿Olvidaste la contraseña?</p>
+                </div>
+                <hr style="margin: 10px 0px">
+                <div class="btnGoogleContainer">
+                   <button class="button btnGoogle"> Login with google <mat-icon class="icon">home</mat-icon></button>
+                   
+                </div>
+            </div>
+        </form>
 
     </div>
 </div>
