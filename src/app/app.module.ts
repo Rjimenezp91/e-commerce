@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from "@angular/common/http";
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/shared/login/login.component';
 
@@ -28,7 +29,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     MaterialModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
     // AuthModule,
     // provideFirebaseApp(()=> initializeApp(environment.firebaseConfig)),
     // provideFirestore(()=> getFirestore())

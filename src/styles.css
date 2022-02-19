@@ -8,6 +8,9 @@
     --secondary-color: #B762C1;
     --tertiary-color: #EA99D5;
     --carbon: #2e2e2e;
+    --disabled-background: #cccccc;
+    --disabled-color: #666666;
+
 
 }
 *{
@@ -38,6 +41,14 @@ body.active
     font-size: 1em;
     font-weight: 500;
     border: none;
+
+    
+    
+}
+button:disabled{
+  background-color: var(--disabled-background);
+  color: var(--disabled-color);
+
 }
 
 .button.active
@@ -52,13 +63,11 @@ mat-label
 {
     color: var(--primary-color);
 }
-::ng-deep.mat-form-field-underline 
-{
-    /*change color of underline*/
-    background-color: green !important;
-} 
+
 
 /* FIN MATERIAL */
 
-/* html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
+/* @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+} */

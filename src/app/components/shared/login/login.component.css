@@ -4,7 +4,7 @@
     height: 500px;
     margin: 20px;
 }
-.blueBg{
+.background{
     position: absolute;
     top:40px;
     width: 100%;
@@ -16,7 +16,7 @@
     box-shadow: 0 5px 45px rgba(0,0,0,.15);
 }
 
-.blueBg .box
+.background .box
 {
     position: relative;
     width: 50%;
@@ -26,7 +26,7 @@
     align-items: center;    
 }
 
-.blueBg .box h2
+.background .box h2
 {
     /* color: #fff; */
     font-size: 1.2em;
@@ -71,6 +71,7 @@
 .formFieldContainer
 {
     width: 100%;
+    margin-bottom: 0.5em;
     /* padding: 0px 30px; */
 }
 
@@ -101,9 +102,24 @@
     background-color: #a3a3a3;
     display: flex;
     justify-content: center;
+    align-items: center;
+    margin-top: 15px;
 }
 .icon{
     color: #000;
     /* position: absolute; */
-    margin-left: 5px;
+    margin-left: 15px;
+    height: 20px;
+}
+.passwordContainer
+{
+    display: flex; 
+    justify-content: space-between;
+}
+
+.errorSecondPass
+{
+    position: absolute;
+    font-size: 75%;
+    margin: 14px 0 0 0;
 }

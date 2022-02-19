@@ -1,36 +1,94 @@
 <div class="container">
-    <div class="blueBg">
+    <div class="background">
         <div class="box sign-up">
             <h2>¿Ya tienes una cuenta?</h2>
-            <button class="button sign-up" (click)="signUpActive()">Inicia sesión</button>
+            <button class="button sign-up" (click)="validateRegister()">Inicia sesión</button>
         </div>
         <div class="box sign-in">
             <h2>¿No tienes una cuenta?</h2>
-            <button class="button sign-in" (click)="signInActive()">Registrate</button>
+            <button class="button sign-in" (click)="validateRegister()">Registrate</button>
         </div>
     </div>
-    <div class="formBox">
-        <form [formGroup]="loginForm">
+    <div class="formBox" >
+        <form [formGroup]="loginForm" *ngIf="isRegistered">
             <div class="formContainer">
                 <h2 class="title">Iniciar sesión</h2>
                 <mat-form-field class="formFieldContainer" appearance="legacy" floatLabel="always">
                     <mat-label class="label" >Email</mat-label>
                     <input matInput formControlName="email" class="input" placeholder="Escriba su correo">
+                    <mat-error *ngIf="getLoginEmail.hasError('pattern')">
+                        ingrese un email <strong style="color: red;">válido</strong>
+                    </mat-error>
+                    <mat-error *ngIf="getLoginEmail.hasError('required')">
+                        el email es <strong style="color: red;">obligatorio</strong>
+                    </mat-error>
+
                 </mat-form-field>
                 <mat-form-field class="formFieldContainer" floatLabel="always">
-                    <mat-label class="label" >Password</mat-label>
-                    <input matInput formControlName="password" class="input" placeholder="Escriba su contraseña">
+                    <mat-label class="label" >Contraseña</mat-label>
+                    <div class="passwordContainer">
+                        <input matInput formControlName="password" [type]="isSecret ? 'password' : 'text'" placeholder="Ingrese su Contraseña" maxlength="11">
+                        <mat-icon (click)="isSecret = !isSecret">{{isSecret ? 'visibility_off' : 'visibility' }}</mat-icon>
+                    </div>
+                    <mat-error *ngIf="getLoginPassword.hasError('required')">
+                        la contraseña es <strong style="color: red;">obligatoria</strong>
+                    </mat-error>
+
                 </mat-form-field>
                 <div class="buttonContainer">
-                    <button class="button btnLoginCard">Iniciar sesión</button>
+                    <button class="button btnLoginCard" [disabled]="loginForm.invalid" (click)="loginWithUserAndPass()">Iniciar sesión</button>
                 </div>
                 <div>
                     <p>¿Olvidaste la contraseña?</p>
                 </div>
                 <hr style="margin: 10px 0px">
                 <div class="btnGoogleContainer">
-                   <button class="button btnGoogle"> Login with google <mat-icon class="icon">home</mat-icon></button>
-                   
+                <button class="button btnGoogle" (click)="loginWithGoogle()"> Login with google <img src="../../../../assets/icons/google-icon.svg" class="icon" alt=""></button>
+                </div>
+            </div>
+        </form>
+        <form [formGroup]="registerForm" *ngIf="!isRegistered">
+            <div class="formContainer">
+                <h2 class="title">Registrate</h2>
+                <mat-form-field class="formFieldContainer" appearance="legacy" floatLabel="always">
+                    <mat-label class="label" >Email</mat-label>
+                    <input matInput formControlName="email" class="input" placeholder="Escriba su correo">
+                    <mat-error *ngIf="getRegisterEmail.hasError('pattern')">
+                        ingrese un email <strong style="color: red;">válido</strong>
+                    </mat-error>
+                    <mat-error *ngIf="getRegisterEmail.hasError('required')">
+                        el email es <strong style="color: red;">obligatorio</strong>
+                    </mat-error>
+
+                </mat-form-field>
+                <mat-form-field class="formFieldContainer" floatLabel="always">
+                    <mat-label class="label" >Contraseña</mat-label>
+                    <div class="passwordContainer">
+                        <input matInput formControlName="password" [type]="isRegisterPasswordSecret ? 'password' : 'text'" placeholder="Ingrese su Contraseña" maxlength="11">
+                        <mat-icon (click)="isRegisterPasswordSecret = !isRegisterPasswordSecret">{{isRegisterPasswordSecret ? 'visibility_off' : 'visibility' }}</mat-icon>
+                    </div>
+                    <mat-error *ngIf="getRegisterPassword.hasError('required')">
+                        la contraseña es <strong style="color: red;">obligatoria</strong>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="formFieldContainer" floatLabel="always">
+                    <mat-label class="label" >Repita la contraseña</mat-label>
+                    <div class="passwordContainer">
+                        <input matInput formControlName="secondPassword" [type]="isRegisterSecondPasswordSecret ? 'password' : 'text'" placeholder="Ingrese su Contraseña" maxlength="11">
+                        <mat-icon (click)="isRegisterSecondPasswordSecret = !isRegisterSecondPasswordSecret">{{isRegisterSecondPasswordSecret ? 'visibility_off' : 'visibility' }}</mat-icon>
+                    </div>
+                    <mat-error *ngIf="getRegisterSecondPassword.hasError('required')">
+                        la segunda contraseña es <strong style="color: red;">obligatoria</strong>
+                    </mat-error>
+                    
+                    <ng-container *ngIf="getRegisterPassword.value !== getRegisterSecondPassword.value && !getRegisterSecondPassword.hasError('required')" >
+                        <mat-error class="errorSecondPass">
+                            las contraseñas deben ser <strong style="color: red;">iguales</strong>
+                        </mat-error>
+                    </ng-container>
+                </mat-form-field>
+                <div class="buttonContainer">
+                    <button class="button btnLoginCard" [disabled]="registerForm.invalid" (click)="createUserWithEmailAndPassword()">Regístrate</button>
                 </div>
             </div>
         </form>
